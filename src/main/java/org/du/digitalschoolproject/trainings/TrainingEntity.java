@@ -2,8 +2,10 @@ package org.du.digitalschoolproject.trainings;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "trainings")
 public class TrainingEntity {
 
     @Id
