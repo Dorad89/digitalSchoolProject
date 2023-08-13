@@ -1,14 +1,13 @@
 package org.du.digitalschoolproject.trainings;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "trainings")
 public class TrainingEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String title;
     private String icon;
