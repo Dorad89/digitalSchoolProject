@@ -1,13 +1,14 @@
-package org.du.digitalschoolproject.students;
+package org.du.digitalschoolproject.roles;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class StudentEntity {
+public class RoleEntity {
+
     @Id
     private long id;
-    private long userId;
+    private String title;
 
     public long getId() {
         return id;
@@ -17,11 +18,11 @@ public class StudentEntity {
         this.id = id;
     }
 
-    public long getUserId() {
-        return userId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
