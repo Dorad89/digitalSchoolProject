@@ -2,10 +2,8 @@ package org.du.digitalschoolproject.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
@@ -23,7 +21,8 @@ public class UsersController {
     @GetMapping(path = "/users")
     public List<UserEntity> findAll(){
 
-        return usersRepository.findAll();
+        List<UserEntity> userEntities = usersRepository.findAll();
+        return userEntities;
     }
 
     @GetMapping(path = "/users/{id}")
@@ -36,5 +35,12 @@ public class UsersController {
     public Set<UserEntity> findByName(@RequestParam String name){
 
         return usersRepository.findByFirstNameIgnoreCase(name);
+    }
+
+    @PostMapping(path = "/users")
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserEntity save(@RequestBody UserEntity userEntity){
+
+        return usersRepository.save(userEntity);
     }
 }
