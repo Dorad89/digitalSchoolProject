@@ -2,21 +2,12 @@ package org.du.digitalschoolproject.roles;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import org.du.digitalschoolproject.commons.BaseEntity;
 
 @Entity
-public class RoleEntity {
+public class RoleEntity extends BaseEntity {
 
-    @Id
-    private long id;
     private String title;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

@@ -2,24 +2,16 @@ package org.du.digitalschoolproject.adresses;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import org.du.digitalschoolproject.commons.BaseEntity;
 
 @Entity
-public class AdressEntity {
+public class AdressEntity extends BaseEntity {
 
-    @Id
-    private long id;
+
     private String street;
     private String city;
     private String state;
     private String zipCode;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getStreet() {
         return street;

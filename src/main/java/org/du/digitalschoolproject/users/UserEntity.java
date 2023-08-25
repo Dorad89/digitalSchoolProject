@@ -1,14 +1,12 @@
 package org.du.digitalschoolproject.users;
 
 import jakarta.persistence.*;
+import org.du.digitalschoolproject.commons.BaseEntity;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     private long roleId;
     private long adressId;
     private String firstName;
@@ -16,14 +14,6 @@ public class UserEntity {
     private String email;
     private String phoneNumber;
     private byte[] profilePicture;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getRoleId() {
         return roleId;

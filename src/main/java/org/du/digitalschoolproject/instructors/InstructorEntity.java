@@ -1,25 +1,15 @@
 package org.du.digitalschoolproject.instructors;
 
 import jakarta.persistence.*;
+import org.du.digitalschoolproject.commons.BaseEntity;
 
 @Entity
 @Table(name = "instructors")
-public class InstructorEntity {
+public class InstructorEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     private long userId;
     private String title;
     private double salary;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getUserId() {
         return userId;

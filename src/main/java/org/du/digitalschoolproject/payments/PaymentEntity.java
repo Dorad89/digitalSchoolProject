@@ -2,23 +2,14 @@ package org.du.digitalschoolproject.payments;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import org.du.digitalschoolproject.commons.BaseEntity;
 
 @Entity
-public class PaymentEntity {
+public class PaymentEntity extends BaseEntity {
 
-    @Id
-    private long id;
     private String paymentMode;
     private String paymentStatus;
     private long studentGroupId;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getPaymentMode() {
         return paymentMode;

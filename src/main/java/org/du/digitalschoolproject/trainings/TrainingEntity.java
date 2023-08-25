@@ -1,24 +1,14 @@
 package org.du.digitalschoolproject.trainings;
 
 import jakarta.persistence.*;
+import org.du.digitalschoolproject.commons.BaseEntity;
 
 @Entity
 @Table(name = "trainings")
-public class TrainingEntity {
+public class TrainingEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
     private String title;
     private String icon;
-
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
-    }
 
     public String getTitle() {
         return title;

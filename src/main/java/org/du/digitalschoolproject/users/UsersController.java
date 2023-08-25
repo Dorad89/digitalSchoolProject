@@ -35,6 +35,6 @@ public class UsersController {
     @GetMapping(path = "/users", params = "name")
     public Set<UserEntity> findByName(@RequestParam String name){
 
-        return usersRepository.findByName(name);
+        return usersRepository.findByFirstNameIgnoreCase(name);
     }
 }
