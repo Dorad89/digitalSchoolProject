@@ -1,22 +1,29 @@
 package org.du.digitalschoolproject.trainings;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class TrainingsController {
 
-    private TrainingsRepository trainingsRepository;
+    private TrainingsService trainingsService;
     @Autowired
-    public TrainingsController(TrainingsRepository trainingsRepository) {
-        this.trainingsRepository = trainingsRepository;
+    public TrainingsController(TrainingsService trainingsService) {
+        this.trainingsService = trainingsService;
     }
 
-/*    @GetMapping(path="/trainings")
+    @GetMapping(path="/trainings")
     public List<TrainingEntity> findAll(){
-        return trainingsRepository.findAll();
-    }*/
+        return trainingsService.findAll();
+    }
+    @GetMapping(path = "/trainings", params = "title")
+    public TrainingEntity findByTitle(@RequestParam String title){
+        return trainingsService.findByTitle(title);
+    }
+    @PostMapping(path = "/trainings")
+    public TrainingEntity save(@RequestBody TrainingEntity trainingEntity){
+        return trainingsService.save(trainingEntity);
+    }
 }
