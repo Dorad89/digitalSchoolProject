@@ -11,36 +11,36 @@ import java.util.Set;
 @RestController
 public class UsersController {
 
-    private UsersRepository usersRepository;
+    private UsersService usersService;
     @Autowired
-    public UsersController(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
+    public UsersController(UsersService usersService) {
+        this.usersService = usersService;
     }
 
 
     @GetMapping(path = "/users")
     public List<UserEntity> findAll(){
 
-        List<UserEntity> userEntities = usersRepository.findAll();
+        List<UserEntity> userEntities = usersService.findAll();
         return userEntities;
     }
 
     @GetMapping(path = "/users/{id}")
     public UserEntity findById(@PathVariable Long id){
 
-        return usersRepository.findById(id).orElse(null);
+        return usersService.findById(id).orElse(null);
     }
 
     @GetMapping(path = "/users", params = "name")
     public Set<UserEntity> findByName(@RequestParam String name){
 
-        return usersRepository.findByFirstNameIgnoreCase(name);
+        return usersService.findByName(name);
     }
 
     @PostMapping(path = "/users")
     @ResponseStatus(HttpStatus.CREATED)
     public UserEntity save(@RequestBody UserEntity userEntity){
 
-        return usersRepository.save(userEntity);
+        return usersService.save(userEntity);
     }
 }
