@@ -3,6 +3,7 @@ package org.du.digitalschoolproject.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -34,6 +35,10 @@ public class UsersServiceImpl implements UsersService{
 
     @Override
     public UserEntity save(UserEntity userEntity) {
+
+        userEntity.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        userEntity.setCreatedBy(1L); //to be corrected
+
         return usersRepository.save(userEntity);
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,11 +31,18 @@ public class TrainingsServiceImpl implements TrainingsService{
 
     @Override
     public TrainingEntity save(TrainingEntity trainingEntity) {
+
+        trainingEntity.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        trainingEntity.setCreatedBy(1L); //to be corrected
+
         return trainingsRepository.save(trainingEntity);
     }
 
     @Override
     public TrainingEntity update(TrainingEntity trainingEntity) {
+
+        trainingEntity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        trainingEntity.setUpdatedBy(1L); //to be corrected
         return trainingsRepository.save(trainingEntity);
     }
 
