@@ -1,9 +1,12 @@
 package org.du.digitalschoolproject.trainings;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrainingsServiceImpl implements TrainingsService{
@@ -28,5 +31,22 @@ public class TrainingsServiceImpl implements TrainingsService{
     @Override
     public TrainingEntity save(TrainingEntity trainingEntity) {
         return trainingsRepository.save(trainingEntity);
+    }
+
+    @Override
+    public TrainingEntity update(TrainingEntity trainingEntity) {
+        return trainingsRepository.save(trainingEntity);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+
+        Optional<TrainingEntity> trainingEntityOptional = trainingsRepository.findById(id);
+
+        if (trainingEntityOptional.isPresent()) {
+            trainingsRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Training with id " + id + " not found.");
+        }
     }
 }
