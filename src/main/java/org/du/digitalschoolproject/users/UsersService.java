@@ -11,4 +11,5 @@ public interface UsersService {
     Set<UserEntity>findByName(String name);
     UserEntity save(UserEntity userEntity);
 
+    void deleteById(Long id);
 }

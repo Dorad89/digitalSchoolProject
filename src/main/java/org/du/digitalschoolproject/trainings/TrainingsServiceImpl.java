@@ -52,9 +52,18 @@ public class TrainingsServiceImpl implements TrainingsService{
         Optional<TrainingEntity> trainingEntityOptional = trainingsRepository.findById(id);
 
         if (trainingEntityOptional.isPresent()) {
-            trainingsRepository.deleteById(id);
+
+            //trainingsRepository.deleteById(id);
+         TrainingEntity trainingEntity = trainingEntityOptional.get();
+
+            trainingEntity.setDeletedAt(new Timestamp(System.currentTimeMillis()));
+            trainingEntity.setDeletedBy(1L); //to be corrected
+
+            trainingsRepository.save(trainingEntity);
+
         } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Training with id " + id + " not found.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                              "Training with id " + id + " not found.");
         }
     }
 }

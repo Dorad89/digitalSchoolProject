@@ -1,5 +1,6 @@
 package org.du.digitalschoolproject.users;
 
+import org.du.digitalschoolproject.trainings.TrainingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -42,5 +43,12 @@ public class UsersController {
     public UserEntity save(@RequestBody UserEntity userEntity){
 
         return usersService.save(userEntity);
+    }
+
+    @DeleteMapping(path = "/users/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete( @PathVariable Long id){
+
+        usersService.deleteById(id);
     }
 }

@@ -1,7 +1,9 @@
 package org.du.digitalschoolproject.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -40,5 +42,23 @@ public class UsersServiceImpl implements UsersService{
         userEntity.setCreatedBy(1L); //to be corrected
 
         return usersRepository.save(userEntity);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+
+        Optional<UserEntity> userEntityOptional = usersRepository.findById(id);
+
+        if (userEntityOptional.isPresent()){
+
+        //    usersRepository.deleteById(id);
+         UserEntity userEntity = userEntityOptional.get();
+         userEntity.setDeletedAt(new Timestamp(System.currentTimeMillis()));
+         userEntity.setDeletedBy(1L); //to be corrected
+
+         usersRepository.save(userEntity);
+
+        }else throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                                "User with id " + id + " not found!");
     }
 }
