@@ -1,5 +1,7 @@
 package org.du.digitalschoolproject.users;
 
+import org.du.digitalschoolproject.users.models.UserEntity;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;

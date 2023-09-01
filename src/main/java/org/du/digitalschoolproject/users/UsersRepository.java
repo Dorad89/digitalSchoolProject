@@ -1,5 +1,6 @@
 package org.du.digitalschoolproject.users;
 
+import org.du.digitalschoolproject.users.models.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

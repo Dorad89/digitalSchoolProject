@@ -1,5 +1,6 @@
 package org.du.digitalschoolproject.trainings;
 
+import org.du.digitalschoolproject.trainings.models.TrainingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

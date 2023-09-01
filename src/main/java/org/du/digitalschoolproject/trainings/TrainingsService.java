@@ -1,5 +1,7 @@
 package org.du.digitalschoolproject.trainings;
 
+import org.du.digitalschoolproject.trainings.models.TrainingEntity;
+
 import java.util.List;
 
 public interface TrainingsService {

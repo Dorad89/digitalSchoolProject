@@ -1,19 +1,21 @@
-package org.du.digitalschoolproject.users;
+package org.du.digitalschoolproject.users.models;
 
-import jakarta.persistence.*;
-import org.du.digitalschoolproject.commons.BaseEntity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import org.du.digitalschoolproject.commons.BaseDto;
 
-@Entity
-@Table(name = "users")
-public class UserEntity extends BaseEntity {
+public class UserDto extends BaseDto {
 
-    private long roleId;
-    private long adressId;
+    @NotBlank(message = "First name must be provided!")
     private String firstName;
+    @NotBlank(message = "Last name must be provided!")
     private String lastName;
+    @Email
     private String email;
     private String phoneNumber;
     private byte[] profilePicture;
+    private long roleId;
+    private long adressId;
 
     public long getRoleId() {
         return roleId;
@@ -70,4 +72,6 @@ public class UserEntity extends BaseEntity {
     public void setProfilePicture(byte[] profilePicture) {
         this.profilePicture = profilePicture;
     }
+
+
 }
