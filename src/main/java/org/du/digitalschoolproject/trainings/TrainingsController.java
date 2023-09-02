@@ -1,5 +1,6 @@
 package org.du.digitalschoolproject.trainings;
 
+import org.du.digitalschoolproject.trainings.models.TrainingDto;
 import org.du.digitalschoolproject.trainings.models.TrainingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,5 +43,12 @@ public class TrainingsController {
     public void delete(@PathVariable Long id){
 
         trainingsService.deleteById(id);
+    }
+
+    @PatchMapping(path = "/trainings/{id}")
+    public TrainingDto partialUpdate(@RequestBody TrainingDto trainingDto, @PathVariable Long id){
+
+        trainingDto.setId(id);
+        return trainingsService.partialUpdate(trainingDto, +id);
     }
 }

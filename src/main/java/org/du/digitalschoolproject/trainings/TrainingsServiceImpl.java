@@ -1,5 +1,6 @@
 package org.du.digitalschoolproject.trainings;
 
+import org.du.digitalschoolproject.trainings.models.TrainingDto;
 import org.du.digitalschoolproject.trainings.models.TrainingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,5 +67,18 @@ public class TrainingsServiceImpl implements TrainingsService{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                                               "Training with id " + id + " not found.");
         }
+    }
+
+    @Override
+    public TrainingDto partialUpdate(TrainingDto trainingDto, long id) {
+
+        Optional<TrainingEntity>trainingEntityOptional = trainingsRepository.findById(id);
+
+        if (trainingEntityOptional.isPresent()){
+            TrainingEntity trainingEntity = trainingEntityOptional.get();
+
+
+        }
+        return null;
     }
 }
