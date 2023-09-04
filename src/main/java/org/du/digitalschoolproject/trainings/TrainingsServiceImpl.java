@@ -1,5 +1,6 @@
 package org.du.digitalschoolproject.trainings;
 
+import org.du.digitalschoolproject.trainings.commons.TrainingMapper;
 import org.du.digitalschoolproject.trainings.models.TrainingDto;
 import org.du.digitalschoolproject.trainings.models.TrainingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +79,16 @@ public class TrainingsServiceImpl implements TrainingsService{
             TrainingEntity trainingEntity = trainingEntityOptional.get();
 
 
+            TrainingMapper.mapDtoToEntity(trainingDto,trainingEntity);
+            trainingEntity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+            trainingEntity.setUpdatedBy(1L); //to be corrected
+
+            TrainingEntity patchedTraining = trainingsRepository.save(trainingEntity);
+            return TrainingMapper.mapEntityToDto(patchedTraining);
+        } else {
+
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Training with id " + id + " not found.");
         }
-        return null;
     }
 }
