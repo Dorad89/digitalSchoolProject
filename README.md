@@ -1,4 +1,5 @@
 # digitalSchoolProject
 ## This repo was used to learn Spring Boot and Microservices
 
-https://fullscale.io/wp-content/uploads/2022/04/spring-boot-microservices-architecture.png
+![spring-boot-microservices-architecture](https://github.com/Dorad89/digitalSchoolProject/assets/93276510/0c413288-f1d0-4e71-973f-edb7b12ca171)
+
