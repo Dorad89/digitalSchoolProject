@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import org.du.digitalschoolproject.commons.BaseEntity;
 
 @Entity
+@Table(name = 'subjects')
 public class SubjectEntity extends BaseEntity {
 
 
